@@ -8,8 +8,14 @@ import streamlit as st
 # AIRBNB PRICE PREDICTION - TASK 3
 # ============================================================
 
-MODEL_PATH = "airbnb_price_prediction_final.pkl"
-DATA_PATH = "AB_NYC_2019.csv"
+# Build paths relative to this script's own location, not the
+# current working directory. Streamlit Cloud runs the app from
+# the repo root, not from inside ML_LAB4/, so a bare filename
+# like "airbnb_price_prediction_final.pkl" fails to resolve there
+# even though it works locally when run from inside the folder.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "airbnb_price_prediction_final.pkl")
+DATA_PATH = os.path.join(BASE_DIR, "AB_NYC_2019.csv")
 
 st.set_page_config(
     page_title="Airbnb Price Predictor",
